@@ -1,0 +1,23 @@
+<%- include("partials/header")%>
+
+<body>
+     <div class="content">
+          <h1><%= listTitle %></h1>
+          <ul>
+               <% for (item of items) { %>
+               <form action="/delete" method="POST">
+                    <li><input type="checkbox" name="check" class="check" onChange="this.form.submit()">
+                         <p><%= item.name %></p>
+                         <input type="hidden" name="id" value="<%=item._id%>">
+                         <input type="hidden" name="list" value="<%= listTitle %>">
+                    </li>
+               </form>
+               <% } %>
+               <li>
+                    <form action="/" method="post"><input type="text" autocomplete="off" class="input" name="name"
+                              placeholder="New Task"><button type="submit" name="list"
+                              value="<%= listTitle %>">+</button></form>
+               </li>
+          </ul>
+     </div>
+</body>
